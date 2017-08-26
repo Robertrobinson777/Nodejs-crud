@@ -1,0 +1,46 @@
+<%- include layout/header.ejs %>
+<form action="/users/add" method="post">
+<div class="container">
+  <div class="row justify-content-md-center">
+
+<div class="col-md-6 ">
+ <p class="h5 text-center mb-4">Add Users </p>
+ 
+<div class="md-form">
+        <i class="fa fa-user prefix grey-text"></i>
+        <input type="text" required name="name" class="form-control">
+        <label for="form3">Your name</label>
+    </div>
+     <div class="md-form">
+        <i class="fa fa-envelope prefix grey-text"></i>
+        <input type="email" required name="email"  id="orangeForm-email" class="form-control ">
+        <label for="orangeForm-email">Your email</label>
+    </div>
+
+    <div class="md-form">
+        <i class="fa fa-phone prefix grey-text"></i>
+        <input type="number" required name="phone"  id="orangeForm-pass" class="form-control ">
+        <label for="orangeForm-pass">Your Phone Number</label>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-deep-orange">Add User</button>
+<button onClick="back()" class="btn btn-danger">Back</button>
+        
+    </div>
+    
+
+</div>
+</div>
+</form>
+<script>
+function cancel(){
+    window.location.href= '/';
+}
+
+function back(){
+    window.location.href= '/';
+}
+</script>
+
+<%- include layout/footer.ejs %>

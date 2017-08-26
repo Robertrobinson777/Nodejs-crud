@@ -1,0 +1,72 @@
+<%- include layout/header.ejs %>
+<a href="/users/add" class="btn btn-primary">Add </a>
+<table class="table">
+<thead>
+<th>S.I</th>
+<th>Name</th>
+<th>Email</th>
+<th>Phone Number</th>
+<th>Action</th>
+</thead>
+<tbody>
+     <% if(data.length){ 
+                                
+                 for(var i = 0;i < data.length;i++) { %>
+                 
+                <tr>
+                    <td><%=(i+1)%></td>
+                    <td><%=data[i].name%></td>                    
+                    <td><%=data[i].email%></td>
+                    <td><%=data[i].phone%></td>        
+                    <td><a  href="/users/edit/<%=data[i].id%>" data-toggle="tooltip" data-placement="top" title="Edit User"><i class="fa fa-pencil" aria-hidden="true"></i></a> &nbsp;
+                    <a href="/users/delete/<%=data[i].id%>"  onClick= "return modal();"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Delete User" aria-hidden="true"></i></a> </td>            
+                </tr>
+
+                <% }
+                
+                 }
+                 else{ %>
+
+                     <tr>
+                        <td colspan="3">No data found</td>
+                     </tr>
+
+                <% } %>
+
+</tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+          
+            <!--Body-->
+            <div class="modal-body">
+               Are you sure to Delete?
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="confirmOk">Yes</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!-- Modal -->
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+function modal(){
+    $('#myModal').modal('show');
+   $("#confirmOk").on('click', function() {
+     return true;   }    
+}
+// $('#myModal').modal('show')
+
+</script>
+     <%- include layout/footer.ejs %>
